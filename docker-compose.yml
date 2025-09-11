@@ -3,61 +3,46 @@ services:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
-    container_name: laravel11-app
+    container_name: laravel12-app
     volumes:
-      - .:/workspaces/${localWorkspaceFolderBasename}:delegated
-    working_dir: /workspaces/${localWorkspaceFolderBasename}
+      - .:/workspaces/${COMPOSE_PROJECT_NAME:-laravel12}
+    working_dir: /workspace
     command: bash -lc "tail -f /dev/null"
     environment:
-      - TZ=America/Bogota
-      - XDEBUG_MODE=off
+      - TZ=UTC
     ports:
-      - "8001:8000"
+      - "8000:8000"
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_started
-      mailpit:
-        condition: service_started
+      - db
+      - redis
+      - mailpit
 
   db:
     image: mysql:8.4.3
-    container_name: laravel11-db
+    container_name: laravel12-db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: laravel
       MYSQL_USER: laravel
       MYSQL_PASSWORD: admin
-      TZ: America/Bogota
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "mysqladmin ping -u$$MYSQL_USER -p$$MYSQL_PASSWORD -h 127.0.0.1 --silent",
-        ]
-      interval: 10s
-      timeout: 5s
-      retries: 10
     volumes:
-      - dbdata-laravel11:/var/lib/mysql
+      - dbdata-laravel12:/var/lib/mysql
     ports:
-      - "3307:3306"
+      - "3306:3306"
 
   redis:
     image: redis:7
-    container_name: laravel11-redis
-    command: ["redis-server", "--appendonly", "yes"]
+    container_name: laravel12-redis
     ports:
       - "6379:6379"
 
   mailpit:
     image: axllent/mailpit:latest
-    container_name: laravel11-mailpit
+    container_name: laravel12-mailpit
     ports:
       - "8025:8025" # UI
       - "1025:1025" # SMTP
 
 volumes:
-  dbdata-laravel11:
+  dbdata-laravel12:
