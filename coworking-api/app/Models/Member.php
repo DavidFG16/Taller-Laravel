@@ -35,7 +35,7 @@ public function plan(){
     return $this->belongsTo(Plan::class);
 }
 
-public function bookings(): HasMany
+public function bookings()
 {
     return $this->hasMany(Booking::class);
 }

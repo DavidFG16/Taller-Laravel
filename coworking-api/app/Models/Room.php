@@ -26,7 +26,12 @@ protected $hidden = [
 
 public function space(){
     return $this->belongsTo(Space::class);
-} 
+}
+
+public function booking(){
+        return $this->hasMany(Booking::class);
+    }
+
 
 public function amenity(){
     return $this->belongsToMany(Amenity::class)->using(AmenityRoom::class)->withTimeStamps();
