@@ -17,7 +17,9 @@ class InvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'payment_id' => ,
+            'number' => fake()->randomNumber(4, true),
+            'issued_date' => fake()->dateTime()
         ];
     }
 }

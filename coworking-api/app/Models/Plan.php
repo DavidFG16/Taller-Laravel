@@ -9,7 +9,7 @@ class Plan extends Model
 {
     /** @use HasFactory<\Database\Factories\PlanFactory> */
     use HasFactory;
-}
+
 
 protected $table = "plans";
 
@@ -27,4 +27,5 @@ protected $fillable = [
 public function members()
 {
     return $this->hasMany(Member::class);
+}
 }

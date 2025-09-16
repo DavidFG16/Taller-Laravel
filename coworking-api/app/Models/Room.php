@@ -12,7 +12,7 @@ class Room extends Model
 {
     /** @use HasFactory<\Database\Factories\RoomFactory> */
     use HasFactory;
-}
+
 
 protected $table = "rooms";
 
@@ -33,8 +33,8 @@ public function booking(){
     }
 
 
-public function amenity(){
+public function amenities(){
     return $this->belongsToMany(Amenity::class)->using(AmenityRoom::class)->withTimeStamps();
-} 
+} }
 
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('company')->nullable();
             $table->date('joined_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

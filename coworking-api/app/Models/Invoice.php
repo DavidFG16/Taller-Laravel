@@ -9,7 +9,7 @@ class Invoice extends Model
 {
     /** @use HasFactory<\Database\Factories\InvoiceFactory> */
     use HasFactory;
-}
+
 
  protected $fillable = [
         'payment_id',
@@ -21,4 +21,4 @@ class Invoice extends Model
     public function payment()
     {
         return $this->belongsTo(Payment::class);
-    }
+    }}

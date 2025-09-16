@@ -9,7 +9,7 @@ class Amenity extends Model
 {
     /** @use HasFactory<\Database\Factories\AmenityFactory> */
     use HasFactory;
-}
+
 
 protected $table = "amenities";
 
@@ -22,4 +22,4 @@ protected $fillable = [
 public function rooms()
 {
     return $this->belongsToMany(Room::class)->using('amenity_room')->withTimestamps();
-}
+}}

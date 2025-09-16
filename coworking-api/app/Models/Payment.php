@@ -9,7 +9,7 @@ class Payment extends Model
 {
     /** @use HasFactory<\Database\Factories\PaymentFactory> */
     use HasFactory;
-}
+
 
 protected $table = "payments";
 
@@ -29,4 +29,4 @@ public function booking()
 public function invoices()
 {
     return $this->hasMany(Invoice::class);
-}
+}}

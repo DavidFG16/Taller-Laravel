@@ -10,15 +10,15 @@ class Space extends Model
 {
     /** @use HasFactory<\Database\Factories\SpaceFactory> */
     use HasFactory;
-}
+
 
 protected $table = "spaces";
 
  protected $fillable = [
         'name',
-        'adddress',
+        'address',
     ];
 
 public function room(){
     return $this->hasMany(Room::class);
-}   
+}}

@@ -11,7 +11,7 @@ class Booking extends Model
 {
     /** @use HasFactory<\Database\Factories\BookingFactory> */
     use HasFactory;
-}
+
 
 protected $table = "bookings";
 
@@ -36,10 +36,10 @@ public function member(){
 }
 
 public function room(){
-    return $this->belongsTo(Room::class)
+    return $this->belongsTo(Room::class);
 }
 
 public function payments()
 {
     return $this->hasMany(Payment::class);
-}
+}}

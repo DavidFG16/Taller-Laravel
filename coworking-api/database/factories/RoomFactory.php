@@ -14,10 +14,13 @@ class RoomFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
+    public function definition(): array {
         return [
-            //
+            'space_id' => fn () => Space::factory()->create()->id,
+            'name'     => fake()->unique()->bothify('Sala-###'),
+            'capacity' => fake()->numberBetween(2, 30),
+            'type'     => fake()->randomElement(['meeting','workshop','phonebooth','auditorium']),
+            'is_active'=> true,
         ];
-    }
+}
 }
