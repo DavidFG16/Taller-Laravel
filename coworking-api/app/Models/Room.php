@@ -16,7 +16,7 @@ class Room extends Model
 
 protected $table = "rooms";
 
-protected $hidden = [
+protected $fillable = [
         'space_id',
         'name',
         'capacity',
